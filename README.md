@@ -1,3 +1,16 @@
+![image](https://github.com/Cde571/stream_fighter_educativo/assets/127961203/d99da5f5-166b-4d3e-b4b0-1697d8e80fb6)
+
+
+
+
+
+
+
+
+
+
+
+
 # Astro Starter Kit: Basics
 
 ```sh
