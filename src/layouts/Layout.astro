@@ -1,0 +1,106 @@
+---
+import Header from '../components/Header.astro';	
+import '@fontsource-variable/onest'
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Header />
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: "onest variable", sans-serif;
+		background: #141d00;
+		background-size: 224px;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+	@media (prefers-color-scheme: dark) {
+		html {
+			color-scheme: dark;
+		}
+	}
+	/* Estilo para los enlaces de navegación */
+.nav-link {
+    position: relative;
+    color: black; /* Color de texto predeterminado */
+    transition: color 0.3s; /* Transición de color al pasar el ratón */
+}
+
+/* Estilo para el efecto hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px; /* Distancia del borde inferior */
+    width: 100%;
+    height: 2px; /* Grosor de la línea */
+    background-color: green; /* Color del hover */
+    transform: scaleX(0); /* Inicialmente invisible */
+    transition: transform 0.3s; /* Efecto de transformación */
+}
+
+/* Efecto hover */
+.nav-link:hover::after {
+    transform: scaleX(1); /* Mostrar la línea al pasar el ratón */
+}
+.nav-link {
+	color: rgb(255, 255, 255);
+	font-size: 30px;
+}
+#header-nav {
+	animation: blur linear both;
+	animation-range: 0 500px;
+	animation-timeline: scroll();
+}
+
+@keyframes blur {
+	to {
+		box-shadow: 
+			0px 5px 50px -5px rgba(18, 48, 1, 0.801),
+					
+			0px 5px 50px 1px rgba(37, 114, 7, 0.692);
+					
+			background: rgba(14, 68, 0, 0.829);
+					
+			backdrop-filter: blur(10px);
+	}
+}
+
+</style>

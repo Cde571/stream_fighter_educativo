@@ -1,0 +1,73 @@
+---
+import BentoItem from './BentoItem.astro';
+---
+<div>
+    <h1 class="w-full text-5xl  mx-96 my-12 mt-4 text-pretty">RECUERDOS DEL STREAM FIGHTER 2</h1>
+</div>
+<section
+    class=`
+        w-full max-w-[1400px]
+        grid grid-cols-10 auto-rows-[25rem] gap-4
+        mx-auto px-20`
+    >
+    <BentoItem 
+        class="col-span-1 md:col-span-4"  
+        title="ROMPIENDO RECORDS"
+        subtitle="MAS DE 800K VIEWS"
+        >
+        <div
+        slot="image"
+        class=" absolute top-0 left-0 w-full 
+            h-full group-hover:scale-110 transit-scale duration-1000
+            ease-in-out opacity-90 bg-blend-luminosity bg-center bg-cover
+            bg-no-repeat  -z-10"
+      style="background-image: url('STF1 (1).jpg');"
+      >
+      </div>
+        <p slot="content" 
+        class="text-pretty"
+      "Desde $6.200.000">
+
+        
+        </p>
+    </BentoItem>
+    <BentoItem 
+        class="col-span-10 md:col-span-6" 
+        title="LA LEALTAD TE LLEVA AL EXITO" 
+        subtitle="LOS MEJORES CON LOS MEJORES"
+        ><div
+        slot="image"
+        class=" absolute top-0 left-0 w-full 
+            h-full group-hover:scale-110 transit-scale duration-1000
+            ease-in-out opacity-90 bg-blend-luminosity bg-center bg-cover
+            bg-no-repeat  -z-10"
+      style="background-image: url('STF1 (2).jpg');"
+        
+        />
+        
+        
+    </BentoItem>
+    <BentoItem 
+        class="col-span-10 md:col-span-6" 
+        title="MAXIMO EXPONENTE DEL STREAMING EN COLOMBIA"/ 
+        subtitle="ADMIRABLE"
+        ><div
+        slot="image"
+        class=" absolute top-0 left-0 w-full 
+            h-full group-hover:scale-110 transit-scale duration-1000
+            ease-in-out opacity-90 bg-blend-luminosity bg-center bg-cover
+            bg-no-repeat  -z-10"
+      style="background-image: url('STF1 (4).jpg');">
+    </div>
+    </BentoItem> 
+        <BentoItem 
+        class="col-span-10 md:col-span-4" 
+        title="RECORD DEL DIRECTO MAS VISTO EN LATAM "/ subtitle='INFLUYENTE'
+        ><div
+        slot="image"
+        class=" absolute top-0 left-0 w-full 
+            h-full group-hover:scale-110 transit-scale duration-1000
+            ease-in-out opacity-90 bg-blend-luminosity bg-center bg-cover
+            bg-no-repeat -z-10"
+      style="background-image: url('STF1 (3).jpg');">
+    </div>
