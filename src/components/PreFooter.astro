@@ -1,0 +1,44 @@
+<astro>
+    <template lang="html">
+      <div class="bg-gray-100 p-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex justify-center space-x-4">
+            <div class="text-center">
+              <span class="text-3xl font-bold" id="viewCounter">0</span>
+              <p class="text-gray-500">Views</p>
+            </div>
+            <div class="text-center">
+              <span class="text-3xl font-bold" id="reachCounter">0</span>
+              <p class="text-gray-500">Reach</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+  
+    <script>
+      // Inicializar los contadores
+      let viewCount = 0;
+      let reachCount = 0;
+  
+      // Función para actualizar los contadores
+      function updateCounters() {
+        // Incrementar el contador de vistas
+        viewCount++;
+        // Calcular el alcance estimado
+        reachCount = viewCount * 3; // Suponiendo que cada vista alcanza a 3 personas
+        // Actualizar los elementos del DOM
+        document.getElementById('viewCounter').innerText = numberWithCommas(viewCount);
+        document.getElementById('reachCounter').innerText = numberWithCommas(reachCount);
+      }
+  
+      // Función para formatear números con comas (ej: 1,000)
+      function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+  
+      // Llamar a la función para actualizar los contadores cuando se carga la página
+      updateCounters();
+    </script>
+  </astro>
+  
