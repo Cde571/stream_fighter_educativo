@@ -37,9 +37,10 @@ const { title } = Astro.props;
 	}
 	html {
 	font-family: "onest variable", sans-serif;
-	background: #141d00; /* Color de fondo de respaldo */
-	background-size: 224px;
+	background: #003dc2; /* Color de fondo de respaldo */
+	background-size: 4008px;
 	background-image: url('/ruido.png');
+	
 }
 
 
@@ -75,7 +76,7 @@ const { title } = Astro.props;
     bottom: -4px; /* Distancia del borde inferior */
     width: 100%;
     height: 2px; /* Grosor de la línea */
-    background-color: green; /* Color del hover */
+    background-color: rgb(0, 129, 214); /* Color del hover */
     transform: scaleX(0); /* Inicialmente invisible */
     transition: transform 0.3s; /* Efecto de transformación */
 }
@@ -97,11 +98,11 @@ const { title } = Astro.props;
 @keyframes blur {
 	to {
 		box-shadow: 
-			0px 5px 50px -5px rgba(18, 48, 1, 0.801),
+			0px 5px 50px -5px rgba(255, 255, 255, 0.801),
 					
-			0px 5px 50px 1px rgba(37, 114, 7, 0.692);
+			0px 5px 50px 1px rgba(0, 42, 104, 0.233);
 					
-			background: rgba(14, 68, 0, 0.829);
+			background: rgba(0, 102, 255, 0.829);
 					
 			backdrop-filter: blur(10px);
 	}
