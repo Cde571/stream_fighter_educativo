@@ -36,7 +36,7 @@ const { title } = Astro.props;
 		);
 	}
 	html {
-	font-family: "onest variable", sans-serif;
+	font-family: "Nunito", sans-serif;
 	background: #003dc2; /* Color de fondo de respaldo */
 	background-size: 4008px;
 	background-image: url('/ruido.png');
@@ -119,6 +119,41 @@ const { title } = Astro.props;
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+.strong{
+	font-weight: 700;
+	color: #003dc2;
+}
+
+<style>
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .card {
+    width: 300px;
+    height: 400px;
+    background-color: #333;
+    color: #fff;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+  }
+.card-hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 </style>

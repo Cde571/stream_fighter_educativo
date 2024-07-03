@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Stream Fighter 3 | Página educativa">
+  <div class="w-full relative font-bold text-2xl p-56 uppercase">
+    <div class="flex flex-col lg:flex-row">
+      <!-- Columna de los pronósticos -->
+      <div class="w-full lg:w-1/3">
+        <div class="pronosticos mb-4 ">
+          <h2 class=" font-bold mb-2 text-4xl">Pronósticos:</h2>
+          <ul class="list-disc pl-4">
+            <li class="pronostico mt-24" data-pair="1">PELEA 1</li>
+            <li class="pronostico mt-3" data-pair="2">PELEA 2</li>
+            <li class="pronostico mt-3" data-pair="3">PELEA 3</li>
+            <li class="pronostico mt-3" data-pair="4">PELEA 4</li>
+            <li class="pronostico mt-3" data-pair="5">PELEA 5</li>
+            <li class="pronosticomt-3" data-pair="6">PELEA 6</li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Columna de las cartas de los peleadores -->
+      <div class="w-full lg:w-2/3 flex flex-wrap justify-center">
+        <div class="mr-8 mb-8" data-pair="1">
+          <div class="card-front " style="background-image: url('/img/peleador1.png');">
+            <!-- Contenido opcional dentro del div -->
+          </div>
+          <div class="card-back">Fighter Info 1</div>
+        </div>
+        <div class="mr-4 mb-4 mx-96 " data-pair="1">
+          <div class="card-front" style="background-image: url('/img/peleador11.png');">
+            <!-- Contenido opcional dentro del div -->
+          </div>
+          <div class="card-back">Fighter Info 2</div>
+        </div>
+        <div class="mr-4 mb-4" data-pair="2">
+          <div class="card-front" style="background-image: url('/img/peleador.png');">
+            <!-- Contenido opcional dentro del div -->
+          </div>
+          <div class="card-back">Fighter Info 3</div>
+        </div>
+        <!-- Agrega las demás cartas de peleadores según el formato -->
+      </div>
+    </div>
+
+    <!-- Botón de votar -->
+    <div class="text-center  ">
+        <a class=" text-4xl mt-36 mx-auto font-bold shadow border rounded-full inline-block border-white px-4 py-2 justify-self-end hover:bg-sky-600 hover:text-white duration-300" target="_blank" href="#">
+            Votar
+        </a>
+    </div>
+  </div>
+</Layout>
+
+  <!-- Estilos adicionales para los pronósticos y cartas -->
+  <style>
+    .pronosticos ul {
+      margin-top: 10px;
+      padding: 0;
+    }
+
+    .pronosticos li {
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+
+    .pronosticos li.selected {
+      text-decoration: line-through;
+      color: #999;
+    }
+
+    .card {
+      width: 150px;
+      height: 200px;
+      perspective: 1000px;
+      margin: 5px;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      width: 20%;
+      height: 40%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+    }
+    .card-front:hover {
+     opacity: 0.9; /* Reducir la opacidad al hacer hover */
+    border: 1px solid #fff; /* Agregar borde al hacer hover */
+    }
+
+
+    .card-front img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 10px;
+      
+    }
+
+    .card-back {
+      background-color: #444;
+      transform: rotateY(180deg);
+    }
+    .card-fronti{
+        
+    }
+  </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pronosticos = document.querySelectorAll('.pronostico');
+      const cards = document.querySelectorAll('.card');
+      let selectedPronostico = null; // Variable para almacenar el pronóstico seleccionado
+  
+      pronosticos.forEach(pronostico => {
+        pronostico.addEventListener('click', () => {
+          const pair = pronostico.getAttribute('data-pair');
+          switchCards(pair);
+          pronostico.classList.toggle('selected');
+  
+          // Guardar el pronóstico seleccionado
+          selectedPronostico = pronostico;
+        });
+      });
+  
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          if (selectedPronostico) {
+            const selectedPair = selectedPronostico.getAttribute('data-pair');
+            const currentPair = card.getAttribute('data-pair');
+  
+            // Verificar si la tarjeta pertenece al pronóstico seleccionado
+            if (selectedPair === currentPair) {
+              card.classList.toggle('flipped');
+            } else {
+              alert('Solo puedes seleccionar una tarjeta por pelea.');
+            }
+          } else {
+            alert('Primero selecciona un pronóstico.');
+          }
+        });
+      });
+  
+      function switchCards(pair) {
+        const selectedCards = document.querySelectorAll(`[data-pair="${pair}"]`);
+        selectedCards.forEach(card => {
+          card.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
+  
+</Layout>
