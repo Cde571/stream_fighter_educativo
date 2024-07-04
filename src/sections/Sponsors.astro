@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Stream Fighter 3 | Página educativa">
+  <section class="mt-32 md:mt-40 ">
+    <h3 class="font-RoadRage text-center text-white text-5xl font-bold mb-4">Patrocinadores</h3>
+    <p class="text-center text-neutral mt-4">Gracias a la colaboración de...</p>
+    <div class="mt-12 grid grid-cols-3 gap-8">
+      {[
+        {
+          id: 'dgeventos',
+          name: 'DG Eventos',
+          url: 'https://dgeventos.com/',
+          image: {
+            name: 'LogoDG',
+            width: 150,
+            height: 100,
+          },
+        },
+        {
+          id: 'everlast',
+          name: 'Everlast',
+          url: 'https://www.everlast.com/',
+          image: {
+            name: 'LogoEverlast',
+            width: 150,
+            height: 100,
+          },
+        },
+        {
+          id: 'lamacarenamed',
+          name: 'La Macarena Medellín',
+          url: 'https://www.instagram.com/lamacarenamed/',
+          image: {
+            name: 'LogoMacarena',
+            width: 150,
+            height: 100,
+          },
+        },
+        {
+          id: 'sayco',
+          name: 'SAYCO',
+          url: 'http://sayco.org/',
+          image: {
+            name: 'LogoSayco',
+            width: 150,
+            height: 100,
+          },
+        },
+        {
+          id: 'stageeventos',
+          name: 'Stage Eventos',
+          url: 'https://stageeventos.com.co/eventos/',
+          image: {
+            name: 'Logostage',
+            width: 150,
+            height: 100,
+          },
+        },
+        {
+          id: 'ttw',
+          name: 'TTW',
+          url: 'https://ttw.com/',
+          image: {
+            name: 'LogoTTW',
+            width: 150,
+            height: 100,
+          },
+        },
+      ].map(({ id, name, url, image }) => (
+        <a
+          id={id}
+          class="company-link flex items-center justify-center"
+          title={`Visita la página del patrocinador ${name}`}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Link con el logo de ${name} que lleva a ${url}`}
+        >
+          <img
+            src={`/public/sponsors/${image.name}.png`} // Asume que .png es la extensión correcta para todos los logos
+            width={image.width}
+            loading="lazy"
+            height={image.height}
+            fetchpriority="low"
+            alt={`Logo de ${name}`}
+            class="company-logo"
+          />
+        </a>
+      ))}
+    </div>
+  </section>
+  <style>.company-link {
+    position: relative; /* Para posicionamiento relativo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease; /* Transición suave al hacer hover */
+  }
+  
+  .company-logo {
+    width: 150px; /* Ajusta el tamaño según tus necesidades */
+    height: 100px; /* Ajusta el tamaño según tus necesidades */
+    transition: transform 0.3s ease; /* Transición suave al hacer hover */
+  }
+  
+  .company-link:hover .company-logo {
+    transform: scale(1.1); /* Efecto de escala al hacer hover para resaltar */
+  }
+  
+  .company-link:hover {
+    transform: scale(1.1); /* Efecto de escala al hacer hover para resaltar */
+  }</style>
+</Layout>
