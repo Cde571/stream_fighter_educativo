@@ -28,7 +28,46 @@ import Layout from '../layouts/Layout.astro';
             height: 100,
           },
         },
-        // Agrega aquí los demás patrocinadores con sus respectivas imágenes
+        {
+          id: 'lamacarenamed',
+          name: 'La Macarena Medellín',
+          url: 'https://www.instagram.com/lamacarenamed/',
+          image: {
+            name: 'LogoMacarena',
+            width: 150,
+            height: 100,
+          },
+        },
+        {
+          id: 'sayco',
+          name: 'SAYCO',
+          url: 'http://sayco.org/',
+          image: {
+            name: 'LogoSayco',
+            width: 150,
+            height: 100,
+          },
+        },
+        {
+          id: 'stageeventos',
+          name: 'Stage Eventos',
+          url: 'https://stageeventos.com.co/eventos/',
+          image: {
+            name: 'logoStage',
+            width: 150,
+            height: 100,
+          },
+        },
+        {
+          id: 'ttw',
+          name: 'TTW',
+          url: 'https://ttw.com/',
+          image: {
+            name: 'LogoTTW',
+            width: 150,
+            height: 100,
+          },
+        },
       ].map(({ id, name, url, image }) => (
         <a
           id={id}
@@ -40,7 +79,7 @@ import Layout from '../layouts/Layout.astro';
           aria-label={`Link con el logo de ${name} que lleva a ${url}`}
         >
           <img
-            src={`../sponsors/${image.name}.png`}  
+            src={`/sponsors/${image.name}.png`} 
             width={image.width}
             loading="lazy"
             height={image.height}
@@ -52,27 +91,25 @@ import Layout from '../layouts/Layout.astro';
       ))}
     </div>
   </section>
-  <style>
-    .company-link {
-      position: relative; /* Para posicionamiento relativo */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease; /* Transición suave al hacer hover */
-    }
-    
-    .company-logo {
-      width: 150px; /* Ajusta el tamaño según tus necesidades */
-      height: 100px; /* Ajusta el tamaño según tus necesidades */
-      transition: transform 0.3s ease; /* Transición suave al hacer hover */
-    }
-    
-    .company-link:hover .company-logo {
-      transform: scale(1.1); /* Efecto de escala al hacer hover para resaltar */
-    }
-    
-    .company-link:hover {
-      transform: scale(1.1); /* Efecto de escala al hacer hover para resaltar */
-    }
-  </style>
+  <style>.company-link {
+    position: relative; /* Para posicionamiento relativo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease; /* Transición suave al hacer hover */
+  }
+  
+  .company-logo {
+    width: 150px; /* Ajusta el tamaño según tus necesidades */
+    height: 100px; /* Ajusta el tamaño según tus necesidades */
+    transition: transform 0.3s ease; /* Transición suave al hacer hover */
+  }
+  
+  .company-link:hover .company-logo {
+    transform: scale(1.1); /* Efecto de escala al hacer hover para resaltar */
+  }
+  
+  .company-link:hover {
+    transform: scale(1.1); /* Efecto de escala al hacer hover para resaltar */
+  }</style>
 </Layout>
