@@ -174,28 +174,32 @@ import Layout from '../layouts/Layout.astro';
   </style>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const pronosticos = document.querySelectorAll('.pronostico');
-    const cards = document.querySelectorAll('.card');
+    const pronosticos = document.querySelectorAll<HTMLElement>('.pronostico');
+    const cards = document.querySelectorAll<HTMLElement>('.card');
     let selectedPronostico: HTMLElement | null = null;
-    let selections = {}; // Objeto para almacenar las selecciones para cada pelea
+    let selections: { [key: string]: HTMLElement | null } = {}; // Objeto para almacenar las selecciones para cada pelea
 
     pronosticos.forEach(pronostico => {
         pronostico.addEventListener('click', () => {
             const pair = pronostico.getAttribute('data-pair');
-            switchCards(pair as string);
-            pronostico.classList.toggle('selected');
-            selectedPronostico = pronostico; // Actualiza la variable selectedPronostico
-            
-            // Restaura el color original de cualquier pronóstico previamente seleccionado
-            pronosticos.forEach(p => {
-                if (p !== pronostico && p.classList.contains('black-and-white')) {
-                    p.classList.remove('black-and-white');
-                }
-            });
+            if (pair) {
+                switchCards(pair);
+                pronostico.classList.toggle('selected');
+                selectedPronostico = pronostico; // Actualiza la variable selectedPronostico
+                
+                // Restaura el color original de cualquier pronóstico previamente seleccionado
+                pronosticos.forEach(p => {
+                    if (p !== pronostico && p.classList.contains('black-and-white')) {
+                        p.classList.remove('black-and-white');
+                    }
+                });
 
-            // Aplica el efecto blanco y negro al pronóstico seleccionado
-            if (selectedPronostico) {
-                selectedPronostico.classList.add('black-and-white');
+                // Aplica el efecto blanco y negro al pronóstico seleccionado
+                if (selectedPronostico) {
+                    selectedPronostico.classList.add('black-and-white');
+                }
+            } else {
+                console.error('El atributo data-pair no está definido para el pronóstico.');
             }
         });
     });
@@ -205,19 +209,18 @@ import Layout from '../layouts/Layout.astro';
             if (selectedPronostico) {
                 const selectedPair = selectedPronostico.getAttribute('data-pair');
                 const cardPair = card.getAttribute('data-pair');
-                if (selectedPair === cardPair) {
+                if (selectedPair === cardPair && selectedPair) {
                     if (card.classList.contains('flipped')) {
                         card.classList.remove('flipped');
                         card.classList.remove('selected-card');
-                        if (selectedPair !== null) 
-                        selectedPronostico.classList.remove('black-and-white'); // Restaura el color del pronóstico
+                        selections[selectedPair] = null; // Restablece la selección a null
+                        if (selectedPair !== null) {
+                            selectedPronostico.classList.remove('black-and-white'); // Restaura el color del pronóstico
+                        }
                     } else {
                         card.classList.add('flipped');
                         card.classList.add('selected-card');
-                        const cardPair = card.getAttribute('data-pair');
-                        if (selectedPair !== null && selectedPair === cardPair) {
-                           // Rest of the code remains the same
-                        } 
+                        selections[selectedPair] = card; // Almacena la tarjeta seleccionada
                         selectedPronostico.classList.add('black-and-white'); // Aplica el efecto blanco y negro al pronóstico
                     }
                     console.log(selections); // Para depuración, registra las selecciones
@@ -239,6 +242,7 @@ import Layout from '../layouts/Layout.astro';
         });
     }
 });
+
 
   </script>
 
